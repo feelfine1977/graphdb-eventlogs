@@ -3,9 +3,6 @@ import time, csv
 from neo4j import GraphDatabase
 import os.path
 
-
-
-
 ### begin config
 # connection to Neo4J database
 driver = GraphDatabase.driver("bolt://localhost:7687", auth=("neo4j", "password"))
@@ -438,6 +435,8 @@ if step_createEntityRelations:
         perf = perf.append({'name':dataSet+'_create_entity_relationships '+relation[0], 'start':last, 'end':end, 'duration':(end - last)},ignore_index=True)
         print('Entity '+relation[0]+' done: took '+str(end - last)+' seconds')
         last = end
+
+
 
 if step_reifyRelations:
     for relation in model_relations: #per relation
